@@ -31,8 +31,49 @@ function App() {
           Explore the menu
         </button>
       </section>
+      <section className="menu-section" id="menu">
+        <p className="eyebrow">OUR MENU</p>
+
+        <h2>Made to share, made with care.</h2>
+
+        <div className="product-grid">
+          {products.map((product) => (
+            <article className="product-card" key={product.id}>
+              <p>{product.category}</p>
+              <h3>{product.name}</h3>
+              <p>₺{product.price}</p>
+            </article>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
+const products = [
+  {
+    id: 1,
+    name: "Stuffed Grape Leaves",
+    category: "Savory",
+    price: 320,
+  },
+  {
+    id: 2,
+    name: "Çiğ Köfte Platter",
+    category: "Savory",
+    price: 280,
+  },
+  {
+    id: 3,
+    name: "Mini Celebration Cake",
+    category: "Sweet",
+    price: 450,
+  },
+  {
+    id: 4,
+    name: "Chocolate Chip Cookies",
+    category: "Sweet",
+    price: 220,
+  },
+];
 
 export default App;
