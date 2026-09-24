@@ -3,7 +3,7 @@ function ProductCard({ product }) {
         <article className="product-card">
             <p>{product.category}</p>
             <h3>{product.name}</h3>
-            <p>₺{product.price}</p>
+            <p className="product-price">₺{product.price}</p>
         </article>
     );
 }
