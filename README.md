@@ -1,16 +1,55 @@
-# React + Vite
+# Table Treats
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple food ordering website built with React.
 
-Currently, two official plugins are available:
+Table Treats is a frontend project designed to practice React fundamentals, reusable components, product data, and responsive UI design.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Responsive navigation
+- Hero section
+- Product menu
+- Reusable `ProductCard` component
+- Savory and sweet product categories
+- Responsive layout for mobile screens
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- React
+- JavaScript
+- CSS
+- Vite
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+
+```text
+src/
+├── App.jsx
+├── App.css
+├── index.css
+└── ProductCard.jsx
+```
+
+## Getting Started
+
+Install the project dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Then open the local development URL shown in the terminal.
+
+## Project Goal
+
+The goal of Table Treats is to practice building a React application while learning how components, props, JavaScript, CSS, and Git work together.
+
+## Status
+
+This project is currently under development. New features and improvements will be added gradually.
