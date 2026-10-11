@@ -1,6 +1,12 @@
+import ProductCard from "./ProductCard";
+import { useState } from "react";
 import "./App.css";
-
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const filteredProducts =
+    selectedCategory === "All"
+      ? products
+      : products.filter((product) => product.category === selectedCategory);
   return (
     <main className="app">
       <header className="navbar">
@@ -35,14 +41,21 @@ function App() {
         <p className="eyebrow">OUR MENU</p>
 
         <h2>Made to share, made with care.</h2>
-
+        <div className="category-filters">
+          {["All", "Savory", "Sweet"].map((category) => (
+            <button
+              key={category}
+              type="button"
+              onClick={() => setSelectedCategory(category)}
+              className={selectedCategory === category ? "active" : ""}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
         <div className="product-grid">
-          {products.map((product) => (
-            <article className="product-card" key={product.id}>
-              <p>{product.category}</p>
-              <h3>{product.name}</h3>
-              <p>₺{product.price}</p>
-            </article>
+          {filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </section>
