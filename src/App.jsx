@@ -33,9 +33,9 @@ function App() {
           Order homemade savory and sweet treats for your next celebration.
         </p>
 
-        <button className="primary-button" type="button">
+        <a className="primary-button" href="#menu">
           Explore the menu
-        </button>
+        </a>
       </section>
       <section className="menu-section" id="menu">
         <p className="eyebrow">OUR MENU</p>
