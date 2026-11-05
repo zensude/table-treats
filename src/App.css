@@ -201,3 +201,20 @@
   color: white;
   border-color: #7a3d2c;
 }
+
+.add-to-cart-button {
+  width: 100%;
+  margin-top: 16px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  color: white;
+  background: #a94e38;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-to-cart-button:hover {
+  background: #8e402e;
+}

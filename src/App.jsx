@@ -3,6 +3,13 @@ import { useState } from "react";
 import "./App.css";
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [cartItems, setCartItems] = useState([]);
+  const cartTotal = cartItems.reduce((total, item) => total + item.price, 0);
+
+  function addToCart(product) {
+    setCartItems([...cartItems, product]);
+  }
+
   const filteredProducts =
     selectedCategory === "All"
       ? products
@@ -20,7 +27,7 @@ function App() {
         </nav>
 
         <button className="cart-button" type="button">
-          Cart (0)
+          Cart ({cartItems.length}) · ₺{cartTotal}
         </button>
       </header>
 
@@ -55,7 +62,11 @@ function App() {
         </div>
         <div className="product-grid">
           {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              onAddToCart={addToCart}
+            />
           ))}
         </div>
       </section>
