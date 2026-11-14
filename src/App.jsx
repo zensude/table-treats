@@ -1,13 +1,21 @@
 import ProductCard from "./ProductCard";
+import CartPanel from "./CartPanel";
 import { useState } from "react";
 import "./App.css";
+
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [cartItems, setCartItems] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const cartTotal = cartItems.reduce((total, item) => total + item.price, 0);
 
   function addToCart(product) {
     setCartItems([...cartItems, product]);
+  }
+
+  function removeFromCart(productId) {
+    const index = cartItems.findIndex((item) => item.id === productId);
+    setCartItems(cartItems.filter((item, itemIndex) => itemIndex !== index));
   }
 
   const filteredProducts =
@@ -26,7 +34,11 @@ function App() {
           <a href="#about">About us</a>
         </nav>
 
-        <button className="cart-button" type="button">
+        <button
+          className="cart-button"
+          type="button"
+          onClick={() => setIsCartOpen(true)}
+        >
           Cart ({cartItems.length}) · ₺{cartTotal}
         </button>
       </header>
@@ -70,6 +82,16 @@ function App() {
           ))}
         </div>
       </section>
+
+      {isCartOpen && (
+        <CartPanel
+          items={cartItems}
+          total={cartTotal}
+          onAdd={addToCart}
+          onRemove={removeFromCart}
+          onClose={() => setIsCartOpen(false)}
+        />
+      )}
     </main>
   );
 }
