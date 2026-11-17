@@ -1,5 +1,6 @@
 import ProductCard from "./ProductCard";
 import CartPanel from "./CartPanel";
+import AboutSection from "./AboutSection";
 import { useState } from "react";
 import "./App.css";
 
@@ -82,6 +83,8 @@ function App() {
           ))}
         </div>
       </section>
+
+      <AboutSection />
 
       {isCartOpen && (
         <CartPanel
