@@ -1,14 +1,29 @@
 import ProductCard from "./ProductCard";
 import CartPanel from "./CartPanel";
 import AboutSection from "./AboutSection";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
+const CART_STORAGE_KEY = "tableTreatsCart";
+
+function loadCart() {
+  try {
+    const savedCart = localStorage.getItem(CART_STORAGE_KEY);
+    return savedCart ? JSON.parse(savedCart) : [];
+  } catch {
+    return [];
+  }
+}
+
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(loadCart);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const cartTotal = cartItems.reduce((total, item) => total + item.price, 0);
+  useEffect(() => {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
+  }, [cartItems]);
+
 
   function addToCart(product) {
     setCartItems([...cartItems, product]);
@@ -17,6 +32,10 @@ function App() {
   function removeFromCart(productId) {
     const index = cartItems.findIndex((item) => item.id === productId);
     setCartItems(cartItems.filter((item, itemIndex) => itemIndex !== index));
+  }
+
+  function clearCart() {
+    setCartItems([]);
   }
 
   const filteredProducts =
@@ -92,6 +111,7 @@ function App() {
           total={cartTotal}
           onAdd={addToCart}
           onRemove={removeFromCart}
+          onClear={clearCart}
           onClose={() => setIsCartOpen(false)}
         />
       )}
