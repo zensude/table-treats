@@ -1,4 +1,4 @@
-function CartPanel({ items, total, onAdd, onRemove, onClose }) {
+function CartPanel({ items, total, onAdd, onRemove, onClear, onClose }) {
     const groupedItems = [];
 
     items.forEach((item) => {
@@ -71,6 +71,16 @@ function CartPanel({ items, total, onAdd, onRemove, onClose }) {
                     <span>Total</span>
                     <strong>₺{total}</strong>
                 </div>
+
+                {groupedItems.length > 0 && (
+                    <button
+                        className="clear-cart-button"
+                        type="button"
+                        onClick={onClear}
+                    >
+                        Clear cart
+                    </button>
+                )}
             </aside>
         </div>
     );
